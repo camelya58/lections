@@ -86,6 +86,25 @@ public class QueueCollection {
         Spliterator<Integer> spliterator= priorityQueue2.spliterator();
         if (spliterator.trySplit() == null)
             System.out.println("Spliterator для очереди priorityQueue2 не может быть использован.");
+        else System.out.println(spliterator.trySplit().characteristics());
+
+        PriorityQueue<String> queueString = new PriorityQueue<>();
+        queueString.add("Goodbye");
+        queueString.add("World");
+        queueString.offer("Welcome ");
+        queueString.offer("Hello");
+
+        Spliterator<String> stringSpliterator = queueString.spliterator();
+        stringSpliterator.trySplit().forEachRemaining(System.out::println);
+
+        int[] array1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int len = array1.length;
+        int[] reverse = new int[len];
+        for (int i = 0; i < len; i++) {
+            reverse[i] = array1[len - 1 - i];
+        }
+        System.out.println(Arrays.toString(array1));
+        System.out.println(Arrays.toString(reverse));
 
     }
 }
